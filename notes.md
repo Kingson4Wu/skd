@@ -49,5 +49,24 @@ ar = "x86_64-w64-mingw32-gcc-ar"
 
 + Rust交叉编译Mac编译Linux/Windows平台 :<https://www.cnblogs.com/007sx/p/15191400.html>
 
++ brew install hub
++ https://llever.com/hub-zh/hub-release.1.zh.html
 
 
++ cd ./target/release
++ zip -q -o skd-mac-bin.zip skd
++ cd ./target/x86_64-pc-windows-gnu/release
++ zip -q -o skd-windows-bin.zip skd.exe
++ cd ./target/x86_64-unknown-linux-musl/release
++ tar -zcvf skd-linux-bin.tar.gz skd
+
++ hub release create -a ./target/release/skd-mac-bin.zip -a ./target/x86_64-unknown-linux-musl/release/skd-linux-bin.tar.gz -a ./target/x86_64-pc-windows-gnu/release/skd-windows-bin.zip -m "release my first program" v0.0.1 (没成功，自己在界面上操作吧。。。)
+
+
++ cp ./target/x86_64-pc-windows-gnu/release/skd-windows-bin.zip ./target/release
++ cp ./target/x86_64-unknown-linux-musl/release/skd-linux-bin.tar.gz ./target/release
+
++ git tag v0.0.1
++ git push origin v0.0.1
+
++ https://github.com/Kingson4Wu/skd/releases/new
